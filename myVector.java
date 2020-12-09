@@ -57,7 +57,7 @@ public class myVector {
         return min;
     }
 
-    public void mul1(double num) {
+    public void mulByANum(double num) {
         double[] newValues = new double[vectorSize];
         int i = 0;
         for (double element : values) {
