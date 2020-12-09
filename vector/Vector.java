@@ -6,7 +6,7 @@ public class Vector {
     private int vectorSize;
     private double[] values;
 
-    public Vector(int vectorSize, double... values) {
+    public Vector(int vectorSize, double[] values) {
         this.vectorSize = vectorSize;
         this.values = values;
     }
@@ -27,7 +27,7 @@ public class Vector {
         this.vectorSize = vectorSize;
     }
 
-    public double fastPower(int base, int exp) {
+    public double fastPower(double base, int exp) {
         if (exp == 0) return 1;
         if (exp % 2 == 0) return fastPower(base * base, exp / 2);
         return base * fastPower(base, exp - 1);
@@ -42,81 +42,73 @@ public class Vector {
     }
 
     public double maxValue() {
-        double max = values[0];
-        for (int i = 1; i < vectorSize; i++) {
-            if (values[i] > max) max = values[i];
+        double max = getValues()[0];
+        for (double elem : values) {
+            if (elem > max) max = elem;
         }
         return max;
     }
 
     public double minValue() {
-        double min = values[0];
-        for (int i = 1; i < vectorSize; i++) {
-            if (values[i] < min) min = values[i];
+        double min = getValues()[0];
+        for (double elem : values) {
+            if (elem < min) min = elem;
         }
         return min;
     }
 
     public void mulByANum(double num) {
         double[] newValues = new double[vectorSize];
-        int i = 0;
-        for (double element : values) {
-            element *= num;
-            newValues[i] = element;
-            i++;
+        for (int i = 0; i < vectorSize; i++) {
+            newValues[i] = values[i] * num;
         }
         setValues(newValues);
     }
 
-    public void quickSort(double[] arr, int lowIndex, int highIndex) {
+    public void quickSort(int lowIndex, int highIndex) {
         int i = lowIndex;
         int j = highIndex;
         int middleIndex = lowIndex + (highIndex - lowIndex) / 2;
-        double pivot = arr[middleIndex];
+        double pivot = values[middleIndex];
         while (i <= j) {
-            while (arr[i] < pivot) {
+            while (values[i] < pivot) {
                 i++;
             }
-            while (arr[j] > pivot) {
+            while (values[j] > pivot) {
                 j--;
             }
             if (i <= j) {
-                double temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                double temp = values[i];
+                values[i] = values[j];
+                values[j] = temp;
             }
             i++;
             j--;
         }
         if (lowIndex < j) {
-            quickSort(arr, lowIndex, j);
+            quickSort(lowIndex, j);
         }
 
         if (highIndex > i) {
-            quickSort(arr, highIndex, i);
+            quickSort(i, highIndex);
         }
     }
 
-    public void add(double[] vector1, double[] vector2) {
-        if (vector1.length != vector2.length) return;
-        double[] res = new double[vector1.length];
+    public void add(Vector vector) {
+        if (vectorSize != vector.vectorSize) return;
+        Vector res = new Vector(vector.vectorSize, new double[vectorSize]);
         for (int i = 0; i < vectorSize; i++) {
-            res[i] += vector1[i] + vector2[i];
+            res.values[i] = values[i] + vector.values[i];
         }
-        setValues(res);
+        setValues(res.values);
     }
 
-    public void scalar(double[] vector1, double[] vector2) {
-        if (vector1.length != vector2.length) return;
-        double[] res = new double[vector1.length];
+    public double scalar(Vector vector) {
+        double scalar = 0;
         for (int i = 0; i < vectorSize; i++) {
-            res[i] += vector1[i] * vector2[i];
+            scalar += values[i] * vector.values[i];
         }
-        setValues(res);
+        return scalar;
     }
 }
-
-
-
-
 
