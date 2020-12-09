@@ -1,12 +1,12 @@
-package myVector;
+package vector;
 
 import static java.lang.Math.*;
 
-public class myVector {
+public class Vector {
     private int vectorSize;
     private double[] values;
 
-    public myVector(int vectorSize, double... values) {
+    public Vector(int vectorSize, double... values) {
         this.vectorSize = vectorSize;
         this.values = values;
     }
