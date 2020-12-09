@@ -96,8 +96,25 @@ public class myVector {
             quickSort(arr, highIndex, i);
         }
     }
-}
 
+    public void add(double[] vector1, double[] vector2) {
+        if (vector1.length != vector2.length) return;
+        double[] res = new double[vector1.length];
+        for (int i = 0; i < vectorSize; i++) {
+            res[i] += vector1[i] + vector2[i];
+        }
+        setValues(res);
+    }
+
+    public void scalar(double[] vector1, double[] vector2) {
+        if (vector1.length != vector2.length) return;
+        double[] res = new double[vector1.length];
+        for (int i = 0; i < vectorSize; i++) {
+            res[i] += vector1[i] * vector2[i];
+        }
+        setValues(res);
+    }
+}
 
 
 
