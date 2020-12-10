@@ -42,7 +42,7 @@ public class Vector {
     }
 
     public double maxValue() {
-        double max = getValues()[0];
+        double max = values[0];
         for (double elem : values) {
             if (elem > max) max = elem;
         }
@@ -50,7 +50,7 @@ public class Vector {
     }
 
     public double minValue() {
-        double min = getValues()[0];
+        double min = values[0];
         for (double elem : values) {
             if (elem < min) min = elem;
         }
