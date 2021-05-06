@@ -1,7 +1,9 @@
 package sorter;
 
+import timer.Timer;
+
 import java.util.Random;
-import java.util.concurrent.Callable;
+
 
 /**
  * Class "Sorter" have 5 different types of sort.
@@ -9,7 +11,7 @@ import java.util.concurrent.Callable;
  * @author Ousookie
  * @version 1.0
  */
-public class Sorter {
+public class Sorter extends Timer {
 
     private static double[] values;
 
@@ -29,17 +31,6 @@ public class Sorter {
      */
     public static double[] getValues() {
         return values;
-    }
-
-    /**
-     * @param method: different types of sort function
-     * @return execution time (except "Quick" sort function)
-     * @throws Exception ?
-     */
-    public static double timer(Callable<Void> method) throws Exception {
-        double start = System.currentTimeMillis();
-        method.call();
-        return System.currentTimeMillis() - start;
     }
 
     /**
