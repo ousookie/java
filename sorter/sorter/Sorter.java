@@ -1,7 +1,5 @@
 package sorter;
 
-import timer.Timer;
-
 import java.util.Random;
 
 
@@ -11,7 +9,7 @@ import java.util.Random;
  * @author Ousookie
  * @version 1.0
  */
-public class Sorter extends Timer {
+public class Sorter {
 
     private static double[] values;
 
