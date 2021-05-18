@@ -1,10 +1,9 @@
 package sorter;
 
-import java.util.Random;
-
+import java.lang.reflect.Method;
 
 /**
- * Class "Sorter" have 5 different types of sort.
+ * Class "Sorter" have some different types of sort.
  *
  * @author Ousookie
  * @version 1.0
@@ -12,16 +11,28 @@ import java.util.Random;
 public class Sorter {
 
     private static double[] values;
+    private static int sortMethodsCount;
+
+    static {
+        Method[] methods = Sorter.class.getDeclaredMethods();
+        for (Method method : methods) {
+            sortMethodsCount++;
+        }
+        sortMethodsCount -= 5;
+    }
 
     /**
-     * @param size: size of array
+     * @return count of types of sort
      */
-    public static void setValues(int size) {
-        Random generator = new Random();
-        values = new double[size];
-        for (int i = 0; i < size; i++) {
-            values[i] = generator.nextDouble();
-        }
+    public static int getSortMethodsCount() {
+        return sortMethodsCount;
+    }
+
+    /**
+     * @param arrValues: desired values of array
+     */
+    public static void setValues(double[] arrValues) {
+        values = arrValues;
     }
 
     /**
@@ -29,6 +40,92 @@ public class Sorter {
      */
     public static double[] getValues() {
         return values;
+    }
+
+    /**
+     * "Bubble" sort function.
+     *
+     * @return null
+     */
+    public static Void checkBubbleSortTimeInMillis() {
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values.length; j++) {
+                if (values[j] > values[i]) {
+                    double temp = values[j];
+                    values[j] = values[i];
+                    values[i] = temp;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * "Brush" sort function.
+     *
+     * @return null
+     */
+    public static Void checkBrushSortTimeInMillis() {
+        final double fact = 1.247;
+        double step = values.length - 1;
+        while (step >= 1) {
+            for (int i = 0; i + (int) step < values.length; i++) {
+                if (values[i + (int) step] < values[i]) {
+                    double temp = values[i];
+                    values[i] = values[i + (int) step];
+                    values[i + (int) step] = temp;
+                }
+                step /= fact;
+            }
+        }
+        checkBubbleSortTimeInMillis();
+        return null;
+    }
+
+    /**
+     * @param values: source array of values
+     * @param start:  start index of array
+     * @param stop:   last index of array
+     * @return index of min value in array
+     */
+    private static int minValueIndex(double[] values, int start, int stop) {
+        int minIndex = start;
+        for (int i = start; i <= stop; i++) {
+            if (values[i] < values[minIndex]) minIndex = i;
+        }
+        return minIndex;
+    }
+
+    /**
+     * "Selection" sort function.
+     *
+     * @return null
+     */
+    public static Void checkSelectionSortTimeInMillis() {
+        for (int i = 0; i < values.length - 1; i++) {
+            int minValueIndex = minValueIndex(values, i, values.length - 1);
+            double temp = values[i];
+            values[i] = values[minValueIndex];
+            values[minValueIndex] = temp;
+        }
+        return null;
+    }
+
+    /**
+     * "Insert" sort function.
+     *
+     * @return null
+     */
+    public static Void checkInsertSortTimeInMillis() {
+        for (int i = 0; i < values.length; i++) {
+            int j = i;
+            while (j > 0 && values[j - 1] > values[j]) {
+                double temp = values[j - 1];
+                values[j - 1] = values[j];
+                values[j] = temp;
+            }
+        }
+        return null;
     }
 
     /**
@@ -84,93 +181,11 @@ public class Sorter {
         quickSort(arr, lowIndex, highIndex);
         return System.currentTimeMillis() - start;
     }
-
-    /**
-     * "Bubble" sort function.
-     *
-     * @return null
-     */
-    public static Void checkBubbleSortTimeInMillis() {
-        for (int i = 0; i < values.length; i++) {
-            for (int j = 0; j < values.length; j++) {
-                if (values[j] > values[i]) {
-                    double temp = values[j];
-                    values[j] = values[i];
-                    values[i] = temp;
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * "Insert" sort function.
-     *
-     * @return null
-     */
-    public static Void checkInsertSortTimeInMillis() {
-        for (int i = 0; i < values.length; i++) {
-            int j = i;
-            while (j > 0 && values[j - 1] > values[j]) {
-                double temp = values[j - 1];
-                values[j - 1] = values[j];
-                values[j] = temp;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * @param values: source array of values
-     * @param start:  start index of array
-     * @param stop:   last index of array
-     * @return index of min value in array
-     */
-    protected static int minValueIndex(double[] values, int start, int stop) {
-        int minIndex = start;
-        for (int i = start; i <= stop; i++) {
-            if (values[i] < values[minIndex]) minIndex = i;
-        }
-        return minIndex;
-    }
-
-    /**
-     * "Selection" sort function.
-     *
-     * @return null
-     */
-    public static Void checkSelectionSortTimeInMillis() {
-        for (int i = 0; i < values.length - 1; i++) {
-            int minValueIndex = minValueIndex(values, i, values.length - 1);
-            double temp = values[i];
-            values[i] = values[minValueIndex];
-            values[minValueIndex] = temp;
-        }
-        return null;
-    }
-
-    /**
-     * "Brush" sort function.
-     *
-     * @return null
-     */
-    public static Void checkBrushSortTimeInMillis() {
-        final double fact = 1.247;
-        double step = values.length - 1;
-        while (step >= 1) {
-            for (int i = 0; i + (int) step < values.length; i++) {
-                if (values[i + (int) step] < values[i]) {
-                    double temp = values[i];
-                    values[i] = values[i + (int) step];
-                    values[i + (int) step] = temp;
-                }
-                step /= fact;
-            }
-        }
-        checkBubbleSortTimeInMillis();
-        return null;
-    }
 }
+
+
+
+
 
 
 
