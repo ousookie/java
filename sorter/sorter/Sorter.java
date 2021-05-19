@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 /**
  * Class "Sorter" have some different types of sort.
  *
- * @author Ousookie
- * @version 1.0
+ * @author Nikolay Dikanskiy
+ * @version 1.1
  */
 public class Sorter {
 
@@ -22,7 +22,7 @@ public class Sorter {
     }
 
     /**
-     * @return count of types of sort
+     * @return count of sort functions
      */
     public static int getSortMethodsCount() {
         return sortMethodsCount;
@@ -182,14 +182,4 @@ public class Sorter {
         return System.currentTimeMillis() - start;
     }
 }
-
-
-
-
-
-
-
-
-
-
 
