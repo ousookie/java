@@ -6,7 +6,7 @@
 ![Main controller redirect logic](https://github.com/ousookie/java/blob/main/UrlShortCutter/images/url_short_cutter_main_logic3.png)
 ## Technology stack
 * Java 8
-* Spring
+* Spring 5
   * spring-core
   * spring-context
   * spring-web
