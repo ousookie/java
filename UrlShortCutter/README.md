@@ -5,9 +5,9 @@
 ![Main controller cut logic](https://github.com/ousookie/java/blob/main/UrlShortCutter/images/url_short_cutter_main_logic2.png)
 ![Main controller redirect logic](https://github.com/ousookie/java/blob/main/UrlShortCutter/images/url_short_cutter_main_logic3.png)
 ## Technology stack
-> Java 8
-> Spring Core
-> Spring MVC
-> PostgreSQL
-> PostgreSQL
-> Handmade Url cut util
+* Java 8
+* Spring
+  * Spring Core
+  * Spring MVC
+* PostgreSql
+* Handmade Url cut util
