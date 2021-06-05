@@ -7,7 +7,13 @@
 ## Technology stack
 * Java 8
 * Spring
-  * Spring Core
-  * Spring MVC
+  * spring-core
+  * spring-context
+  * spring-web
+  * spring-jdbc
+* Thymeleaf-spring5
+* Javax.servlet-api
 * PostgreSQL
+* Hibernate-validator
+* Commons-validator
 * Handmade URLs cut util
