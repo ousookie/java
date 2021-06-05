@@ -9,5 +9,5 @@
 * Spring
   * Spring Core
   * Spring MVC
-* PostgreSql
-* Handmade Url cut util
+* PostgreSQL
+* Handmade URLs cut util
