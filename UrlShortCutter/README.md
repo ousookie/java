@@ -16,4 +16,4 @@
 * PostgreSQL
 * Hibernate-validator
 * Commons-validator
-* Handmade URLs cut util
+* Hand-made URLs cut util
