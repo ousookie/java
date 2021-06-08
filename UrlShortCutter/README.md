@@ -10,6 +10,7 @@
   * spring-core
   * spring-context
   * spring-web
+  * spring-webmvc
   * spring-jdbc
 * Thymeleaf-spring5
 * Javax.servlet-api
