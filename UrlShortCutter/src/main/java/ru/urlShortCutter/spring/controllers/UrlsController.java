@@ -38,6 +38,4 @@ public class UrlsController {
         Url url = urlDAO.getSourceLongUrl(HOST + cutUrl);
         return "redirect:" + url.getSourceUrl();
     }
-
-
 }

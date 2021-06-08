@@ -28,9 +28,15 @@ public class UrlDAO {
                     new Object[]{url.getSourceUrl().trim()},
                     new BeanPropertyRowMapper<>(Url.class)).stream().findAny().orElse(null);
             if (currentUrl == null) {
-                url.setCutUrl(UrlCutter.createShortUrl(url.getSourceUrl()));
                 jdbcTemplate.update("" + "INSERT INTO url(sourceurl, cuturl) VALUES(?, ?)",
-                        url.getSourceUrl(), "http://localhost:8080/" + url.getCutUrl());
+                        url.getSourceUrl(), "http://localhost:8080/" + " ");
+                Url savedUrl = jdbcTemplate.query("SELECT * FROM url WHERE sourceurl=?",
+                        new Object[]{url.getSourceUrl().trim()},
+                        new BeanPropertyRowMapper<>(Url.class)).stream().findAny().orElse(null);
+                assert savedUrl != null;
+                url.setCutUrl(UrlCutter.getBase62String(savedUrl.getId()));
+                jdbcTemplate.update("" + "UPDATE Url SET cuturl=? WHERE id=?",
+                        "http://localhost:8080/" + url.getCutUrl(), savedUrl.getId());
             }
         }
     }
