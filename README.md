@@ -1,2 +1,2 @@
 # `Java`
-> Edu
+> _Edu_
