@@ -13,14 +13,17 @@ public class Url {
     private String srcUrl;
     @Column(name = "cut_url", columnDefinition = "varchar")
     private String cutUrl;
+    @Column(name = "saved_on", columnDefinition = "varchar")
+    private Long savedTime;
 
     public Url() {
     }
 
-    public Url(Integer id, String srcUrl, String cutUrl) {
+    public Url(Integer id, String srcUrl, String cutUrl, Long savedTime) {
         this.id = id;
         this.srcUrl = srcUrl;
         this.cutUrl = cutUrl;
+        this.savedTime = savedTime;
     }
 
     public Integer getId() {
@@ -45,5 +48,13 @@ public class Url {
 
     public void setCutUrl(String cutUrl) {
         this.cutUrl = cutUrl;
+    }
+
+    public Long getSavedTime() {
+        return savedTime;
+    }
+
+    public void setSavedTime(Long savedTime) {
+        this.savedTime = savedTime;
     }
 }
