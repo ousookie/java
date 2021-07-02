@@ -6,6 +6,7 @@ package stack;
  * @version 1.0
  */
 public class Stack<T> {
+    
     private static int stackSize;
     private T top;
     final private T[] values;
@@ -101,6 +102,6 @@ public class Stack<T> {
     public T getValue(int index) {
         return values[index];
     }
+    
 }
-
 
