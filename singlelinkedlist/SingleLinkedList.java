@@ -9,6 +9,7 @@ import node.Node;
  * @version 1.0
  */
 public class SingleLinkedList {
+    
     private static int size;
     private static Node<?> headNode;
     private static Node<?> tailNode;
@@ -100,6 +101,5 @@ public class SingleLinkedList {
     public static <T> Node<T> getTailNode() {
         return (Node<T>) tailNode;
     }
+
 }
-
-
