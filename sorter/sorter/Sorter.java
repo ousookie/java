@@ -181,5 +181,6 @@ public class Sorter {
         quickSort(arr, lowIndex, highIndex);
         return System.currentTimeMillis() - start;
     }
+    
 }
 
