@@ -7,6 +7,7 @@ package node;
  * @version 1.0
  */
 public class Node<T> {
+    
     private T value;
     private Node<T> nextNode;
 
