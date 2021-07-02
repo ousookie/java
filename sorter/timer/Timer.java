@@ -6,6 +6,7 @@ import java.util.concurrent.Callable;
  * Class "Timer" allows you to calculate the execution time of the function.
  */
 public class Timer {
+    
     /**
      * @param method: different types of sort function
      * @return execution time (except "Quick" sort function)
@@ -16,4 +17,5 @@ public class Timer {
         method.call();
         return System.currentTimeMillis() - start;
     }
+    
 }
