@@ -63,8 +63,5 @@ public class Interpolator {
         }
         return lagrangeArray;
     }
+   
 }
-
-
-
-
