@@ -3,6 +3,7 @@ package vector;
 import static java.lang.Math.*;
 
 public class Vector {
+    
     private int vectorSize;
     private double[] values;
 
@@ -110,5 +111,5 @@ public class Vector {
         }
         return scalar;
     }
+    
 }
-
